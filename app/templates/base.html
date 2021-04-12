@@ -23,11 +23,18 @@
         <![endif]-->
         <div>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="{{ url_for("index") }}">Home</a></li>
+                <li><a href="{{ url_for("login") }}">Login</a></li>
             </ul>
         </div>
         <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages%}
+            <p>{{ message }}<p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
 
         {% block content %}>
         {% endblock %}
