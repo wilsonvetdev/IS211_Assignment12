@@ -26,3 +26,4 @@ def login():
 
 # FLASK_APP=grades_app.py FLASK_ENV=development flask run
 # FLASK_APP=grades_app.py FLASK_ENV=development flask db init
+# FLASK_APP=grades_app.py FLASK_ENV=development flask shell
