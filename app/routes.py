@@ -1,4 +1,4 @@
-from app.forms import LoginForm
+from app.forms import LoginForm, AddStudentForm, AddQuizForm
 from flask import render_template, flash, redirect, url_for
 from app import app
 from flask_login import current_user, login_user, logout_user, login_required
@@ -9,6 +9,22 @@ from app.models import User
 def index():
 
     return render_template("index.html", title="Home")
+
+
+@app.route("/student/add", methods=['GET', 'POST'])
+def add_student():
+
+    add_student_form = AddStudentForm()
+
+    return render_template("add_student.html", title="Add Student", add_student_form=add_student_form)
+
+
+@app.route("/quiz/add", methods=['GET', 'POST'])
+def add_quiz():
+
+    add_quiz_form = AddQuizForm()
+
+    return render_template("add_quiz.html", title="Add Quiz", add_quiz_form=add_quiz_form)
 
 
 @app.route("/login", methods=['GET', 'POST'])
