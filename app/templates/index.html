@@ -3,24 +3,44 @@
 
 {% block content %}
 
-    <h1>Hello, You are logged in as {{ current_user.username }}. </h1>
+    <h1>Hello, You are logged in as {{ current_user.username }}.</h1>
 
     <div>
         <h3>View your Students here:</h3>
-        <ul>
-        {% for student in students %}
-            <li>{{ student.first_name }} {{ student.last_name }}</li>
-        {% endfor %}
-        </ul>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last Name</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     <div>
 
     <div>
         <h3>View your Quizzes here:</h3>
-        <ul>
-        {% for quiz in quizzes %}
-            <li>subject: {{ quiz.subject }}, number of questions: {{ quiz.num_of_questions }}, date: {{ quiz.date }}</li>
-        {% endfor %}
-        </ul>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Number of Questions</th>
+                <th>Date</th>
+            <tr>
+            {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.id }}</td>
+                <td>{{ quiz.subject }}</td>
+                <td>{{ quiz.num_of_questions }}</td>
+                <td>{{ quiz.date }}</td>
+            <tr>
+            {% endfor %}
+        </table>
     <div>
 
 {% endblock %}

@@ -15,6 +15,7 @@ def index():
 
 
 @app.route("/student/add", methods=['GET', 'POST'])
+@login_required
 def add_student():
 
     add_student_form = AddStudentForm()
@@ -30,6 +31,7 @@ def add_student():
 
 
 @app.route("/quiz/add", methods=['GET', 'POST'])
+@login_required
 def add_quiz():
 
     add_quiz_form = AddQuizForm()
