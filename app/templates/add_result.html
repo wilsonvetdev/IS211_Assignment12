@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add a new result here</h1>
+    
+    <div>
+        <form action="" method="POST" novalidate>
+        {{ add_result_form.hidden_tag() }}
+            <label for="student-select">Choose a Student:</label>
+                <select name="students" id="student-select">
+                {% for student in students %}
+                    <option value={{ student.id }} >{{ student.first_name }} {{ student.last_name }}</option>
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                </select>
+                <br>
+                <br>
+            <label for="quiz-select">Choose a Quiz:</label>
+                <select name="quizzes" id="quiz-select">
+                {% for quiz in quizzes %}
+                    <option value={{ quiz.id }} >{{ quiz.subject }} - {{ quiz.date }}</option>
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                </select>
+            <p>
+                {{ add_result_form.score.label }}:
+                {{ add_result_form.score(size=32) }}
+                {% for error in add_result_form.score.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ add_result_form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}
