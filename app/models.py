@@ -26,6 +26,9 @@ class Student(db.Model):
 
     def __repr__(self):
         return f'<Student {self.first_name} {self.last_name} - instance of class Student>'
+
+    def get_fullname(self):
+        return f'{self.first_name} {self.last_name}'
     
 
 class Quiz(db.Model):
@@ -37,6 +40,9 @@ class Quiz(db.Model):
     
     def __repr__(self):
         return f'<Quiz instance - subject:{self.subject}, num_of_questions:{self.num_of_questions}, date:{self.date}>'
+    
+    def get_quiz_info(self):
+        return f'{self.subject} - {self.date}'
 
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)

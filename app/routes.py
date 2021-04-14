@@ -60,27 +60,24 @@ def add_quiz():
     return render_template("add_quiz.html", title="Add Quiz", add_quiz_form=add_quiz_form)
 
 
-@app.route("/results/add", methods=['GET', 'POST'])
+@app.route("/result/add", methods=['GET', 'POST'])
 @login_required
 def add_result():
     
     add_result_form = AddResultForm()
-    # add_result_form.students.choices = [(student.id, student.first_name) for student in Student.query.order_by('id')]
-
-    students = Student.query.all()
-    quizzes = Quiz.query.all()
+    add_result_form.students.choices = [(student.id, student.get_fullname()) for student in Student.query.order_by('id')]
+    add_result_form.quizzes.choices = [(quiz.id, quiz.get_quiz_info()) for quiz in Quiz.query.order_by('id')]
 
     if add_result_form.validate_on_submit():
+        print('hello there')
         return redirect(url_for("add_result"))
-        
-    print('hello there')
+
 
     return render_template(
         "add_result.html", 
         title="Add Result", 
-        add_result_form=add_result_form, 
-        students=students, 
-        quizzes=quizzes)
+        add_result_form=add_result_form
+    )
 
 
 @app.route("/login", methods=['GET', 'POST'])

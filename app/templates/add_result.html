@@ -6,21 +6,18 @@
     <div>
         <form action="" method="POST" novalidate>
         {{ add_result_form.hidden_tag() }}
-            <label for="student-select">Choose a Student:</label>
-                <select name="students" id="student-select">
-                {% for student in students %}
-                    <option value={{ student.id }} >{{ student.first_name }} {{ student.last_name }}</option>
+            {{ add_result_form.students.label }}:
+                {{ add_result_form.students }}
+                    {% for error in add_result_form.students.errors %}
                     <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-                </select>
+                    {% endfor %}
                 <br>
                 <br>
-            <label for="quiz-select">Choose a Quiz:</label>
-                <select name="quizzes" id="quiz-select">
-                {% for quiz in quizzes %}
-                    <option value={{ quiz.id }} >{{ quiz.subject }} - {{ quiz.date }}</option>
+            {{ add_result_form.quizzes.label }}:
+                {{ add_result_form.quizzes }}
+                    {% for error in add_result_form.quizzes.errors %}
                     <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
+                    {% endfor %}
                 </select>
             <p>
                 {{ add_result_form.score.label }}:
