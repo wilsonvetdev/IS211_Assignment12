@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Quiz Results for {{ student.first_name }} {{ student.last_name }}<h1>
+
+{% if student.results.first() %}
+<div>
+        <table>
+            <tr>
+                <th>Quiz ID</th>
+                <th>Subject</th>
+                <th>Number of Questions</th>
+                <th>Score</th>
+            </tr>
+            {% for result in student.results%}
+            <tr>
+                <td>{{ result.quiz.id }}</td>
+                <td>{{ result.get_subject() }}</td>
+                <td>{{ result.get_quiz_num_of_questions() }}</td>
+                <td>{{ result.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    <div>
+{% else %}
+<h3>No quiz results for {{ student.first_name }}.</h3>
+{% endif %}
+
+{% endblock %}

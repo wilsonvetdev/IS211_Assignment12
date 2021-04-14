@@ -26,6 +26,7 @@ class Student(db.Model):
 
     def __repr__(self):
         return f'<Student {self.first_name} {self.last_name} - instance of class Student>'
+    
 
 class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,6 +46,15 @@ class Result(db.Model):
 
     def __repr__(self):
         return f'<Result instance>'
+
+    def get_subject(self):
+        return self.quiz.subject
+    
+    def get_quiz_num_of_questions(self):
+        return self.quiz.num_of_questions
+    
+    def get_quiz_date(self):
+        return self.quiz.date
 
 @login.user_loader
 def load_user(id):

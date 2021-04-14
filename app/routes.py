@@ -13,6 +13,14 @@ def index():
 
     return render_template("index.html", title="Home", students=students, quizzes=quizzes)
 
+@app.route("/student/<student_id>", methods=['GET', 'POST'])
+@login_required
+def student_results(student_id):
+    
+    student = Student.query.get(student_id)
+
+    return render_template("student_results.html", student=student)
+
 
 @app.route("/student/add", methods=['GET', 'POST'])
 @login_required
