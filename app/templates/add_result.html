@@ -9,21 +9,21 @@
             {{ add_result_form.students.label }}:
                 {{ add_result_form.students }}
                     {% for error in add_result_form.students.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span style="color: red;">{{ error }}</span>
                     {% endfor %}
                 <br>
                 <br>
             {{ add_result_form.quizzes.label }}:
                 {{ add_result_form.quizzes }}
                     {% for error in add_result_form.quizzes.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span style="color: red;">{{ error }}</span>
                     {% endfor %}
                 </select>
             <p>
                 {{ add_result_form.score.label }}:
                 {{ add_result_form.score(size=32) }}
                 {% for error in add_result_form.score.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>{{ add_result_form.submit() }}</p>

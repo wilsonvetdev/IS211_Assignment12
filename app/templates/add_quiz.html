@@ -11,21 +11,21 @@
                 {{ add_quiz_form.subject.label }}<br>
                 {{ add_quiz_form.subject(size=32) }}
                 {% for error in add_quiz_form.subject.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>
                 {{ add_quiz_form.num_of_questions.label }}<br>
                 {{ add_quiz_form.num_of_questions(size=32) }}
                 {% for error in add_quiz_form.num_of_questions.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>
                 {{ add_quiz_form.date.label }}<br>
                 {{ add_quiz_form.date(size=32) }}
                 {% for error in add_quiz_form.date.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>{{ add_quiz_form.submit() }}</p>

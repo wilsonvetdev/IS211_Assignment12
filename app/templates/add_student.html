@@ -11,14 +11,14 @@
                 {{ add_student_form.first_name.label }}<br>
                 {{ add_student_form.first_name(size=32) }}
                 {% for error in add_student_form.first_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>
                 {{ add_student_form.last_name.label }}<br>
                 {{ add_student_form.last_name(size=32) }}
                 {% for error in add_student_form.last_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span style="color: red;">{{ error }}</span>
                 {% endfor %}
             </p>
             <p>{{ add_student_form.submit() }}</p>
