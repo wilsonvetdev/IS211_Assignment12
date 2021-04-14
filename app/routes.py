@@ -65,12 +65,20 @@ def add_quiz():
 def add_result():
     
     add_result_form = AddResultForm()
-    add_result_form.students.choices = [(student, student.get_fullname()) for student in Student.query.order_by('id')]
-    add_result_form.quizzes.choices = [(quiz, quiz.get_quiz_info()) for quiz in Quiz.query.order_by('id')]
+    add_result_form.students.choices = [(student.id, student.get_fullname()) for student in Student.query.order_by('id')]
+    add_result_form.quizzes.choices = [(quiz.id, quiz.get_quiz_info()) for quiz in Quiz.query.order_by('id')]
 
     if add_result_form.validate_on_submit():
-        student_instance = add_result_form.students.data
-        quiz_instance = add_result_form.quizzes.data
+        student_instance = Student.query.get(add_result_form.students.data)
+        quiz_instance = Quiz.query.get(add_result_form.quizzes.data)
+        score = int(add_result_form.score.data)
+        new_result = Result(
+            student = student_instance,
+            quiz = quiz_instance,
+            score = score
+        )
+        db.session.add(new_result)
+        db.session.commit()
         return redirect(url_for("add_result"))
 
 
