@@ -23,13 +23,13 @@
         <![endif]-->
         <div>
             <ul>
-                <li><a href="{{ url_for("index") }}">Home</a></li>
+                <li><a class="{% if request.endpoint == "index" %} active {% endif %}" href="{{ url_for("index") }}">Home</a></li>
                 {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for("login") }}">Login</a></li>
+                <li><a class="{% if request.endpoint == "login" %} active {% endif %}" href="{{ url_for("login") }}">Login</a></li>
                 {% else %}
-                <li><a href="{{ url_for("add_student") }}">Add Student</a></li>
-                <li><a href="{{ url_for("add_quiz") }}">Add Quiz</a></li>
-                <li><a href="{{ url_for("add_result") }}">Add Result<a></li>
+                <li><a class="{% if request.endpoint == "add_student" %} active {% endif %}" href="{{ url_for("add_student") }}">Add Student</a></li>
+                <li><a class="{% if request.endpoint == "add_quiz" %} active {% endif %}" href="{{ url_for("add_quiz") }}">Add Quiz</a></li>
+                <li><a class="{% if request.endpoint == "add_result" %} active {% endif %}"href="{{ url_for("add_result") }}">Add Result</a></li>
                 <li><a href="{{ url_for("logout") }}">Log Out</a></li>
                 {% endif %}
             </ul>

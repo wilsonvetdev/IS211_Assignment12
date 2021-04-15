@@ -80,7 +80,7 @@ def add_result():
         db.session.add(new_result)
         db.session.commit()
         flash(f"You successfully added a new quiz result for {student_instance.get_fullname()}! Go to the student's page to view their results.")
-        return redirect(url_for("add_result"))
+        return redirect(url_for("index"))
 
 
     return render_template(
