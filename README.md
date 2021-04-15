@@ -4,4 +4,5 @@ flask
 flask-wtf
 wtforms
 flask-sqlalchemy
+flask_migrate
 flask-login
