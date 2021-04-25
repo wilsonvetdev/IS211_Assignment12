@@ -21,7 +21,7 @@
                 </select>
             <p>
                 {{ add_result_form.score.label }}:
-                {{ add_result_form.score(size=32) }}
+                {{ add_result_form.score(size=32) }}<br>
                 {% for error in add_result_form.score.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
